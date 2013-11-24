@@ -1,0 +1,23 @@
+<% content_for :head do %>
+<script type="text/javascript">
+    var headerImf={
+    className:'<%= @wiki_category.name %>',
+    title:'<%= @wiki.title %>',
+    time:'<%= @wiki.created_at %>',
+    auther:'<%= @wiki.author %>'
+  };
+</script>
+<%= stylesheet_link_tag 'wechat/wikis/show' %>
+<%= javascript_include_tag "wechat/wikis/show" %>
+<% end %>
+
+  <div class="header" id="header" >
+    
+    <!--<span id="className"></span>-->
+    <h3 id="title" style="color:#000;padding-left:10px; padding-right:10px;border-right:7px #08c solid;"></h3>
+    <span id="auther" style="color:#999; padding:0 10px;"></span><span id="submitTime" style="color:#999;"></span>
+    
+  </div>
+  <div class="container">
+  <%= @wiki.content %>
+  </div>

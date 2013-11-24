@@ -1,0 +1,21 @@
+<div id="info">
+  <%= form_tag('/wechat/campus/bound_school', method: "post") do %>
+    <%= label_tag(:school, "学校:") %>
+    <%= text_field_tag(:school_name, @school.name) %>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= label_tag(:sex, "男生:") %>
+        <%= radio_button_tag(:sex, 0, true) %>
+        <%= label_tag(:sex, "女生:") %>
+        <%= radio_button_tag(:sex, 1) %>
+      </div>
+    </div>
+    
+    <%= select_tag(:grade, options_for_select([['2013', 2013], ['2012',2012], ['2011', 2011], ['2010', 2010]])) %>
+
+    <%= select_tag(:education_background, options_for_select([['本科生', 0], ['专科生', 1]])) %>
+
+    <%= submit_tag("报到") %>
+  <% end %>
+</div>

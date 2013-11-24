@@ -1,0 +1,162 @@
+    body{
+      margin:0;
+      font-family:'Microsoft YaHei';
+      background: image-url("wechat/wikis/background.png") repeat;
+      text-align:center;
+    }
+    body div{
+      max-width:1000px;
+      margin:auto;
+      text-align:left;
+    }
+    a{
+      color:#fff;
+      font-family:'Microsoft YaHei';
+    }
+    .header{
+      background-color:#1687af;
+      font-size:90%;
+      color:#fff;
+      text-align:center;
+      padding: 5px 5% 15px;
+    }
+    .xybk{
+      font-size:250%;
+      color:#fff;
+      margin:-20px 0px -10px 0;
+    }     
+    #hot{
+      font-weight:bold;
+      color:#ecbf24;
+    }
+    .header-top{
+      text-align:left;
+      padding:0 0 4px 55px;
+      
+    }
+    .header-top p,.header-top ul{
+      margin:0;
+      display:inline-block;
+    }
+    .header-top ul{
+      list-style: none;
+      padding:0;
+      min-width:65%;
+    }
+    .header-top ul li{
+      display:inline-block;
+      padding:0 5% 0 0;
+    }
+    .header-top ul li a{
+      color:#fff;
+      
+    }
+    #search{
+      border:0;
+      width:85%;
+      line-height:27px;
+      margin:0 0 0 10%;
+      outline: none;
+    }
+    .header-middle{
+      border:#7ec5df 4px solid;
+      border-radius:0 58px 58px 110px;
+      background-color:#fff;
+      text-align:left;
+      padding:0 10%;
+      position:relative;
+      z-index:1000;
+    }
+    #search-pic{
+      background:image-url("wechat/wikis/search.png") no-repeat;
+      background-size:88.8px 65px;
+      z-index:1001;
+    }
+    #header-logo{
+      background:image-url("wechat/wikis/baike.png") no-repeat;
+      background-size:88.8px 65px;
+      z-index:1001;
+    }
+    #header-logo{
+      left:-12px;
+      bottom:-4px;
+      height:65px;
+      width:65px;
+      position:absolute;
+    }
+    #search-pic{
+      position:relative;
+      width:22px;
+      height:35px;
+      background-position:bottom right;
+      cursor:pointer;
+    }
+    .search-rightbox{
+      position:absolute;
+      right:15px;
+      top:-4px;
+      display:inline-block;
+      border:none;
+    }
+    #search-btn{
+      display:none;
+    }
+    .header-footer{
+      text-align:right;
+      padding:10px 10px 10px 0;
+    }
+    .header-footer span{
+      margin-left:10px;
+    }
+    .header-footer span a{
+      font-weight:bold;
+    }
+    .container{
+      padding:0 2% 0;
+    }
+    .contentBox{
+      background-color:#1687af;
+      margin:15px 0 25px;
+      border-radius:5px;
+      padding:5px;
+      position: relative;
+    }
+    .contentBox h3{
+      margin:0;
+      background-color:#fff;
+      color:#1687af;
+      padding:3px 7px 3px;
+      font-size:150%;
+      border-radius:3px;
+      font-weight:bold;
+    }
+    .contentBox ul{
+      list-style:none;
+      padding:10px 0 15px;
+      margin:0;
+    }
+    .contentBox ul li{
+      display:inline-block;
+      background-color:#fff;
+      font-weight:bold;
+      margin:4px 2px;
+      font-size:120%;
+      border-radius:3px;
+    }
+    .contentBox ul li a{
+      color:#1687af;
+      font-style:none;
+      padding:2px 14px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    .content{
+      padding:0 5px;
+    }
+    .more-btn{
+      font-size:100%;
+      position:absolute;
+      bottom:0;
+      right:10px;
+      padding-bottom:5px;
+    }

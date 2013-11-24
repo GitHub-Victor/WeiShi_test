@@ -1,0 +1,19 @@
+<% content_for :sub_title, @wiki_category.name || t("wiki_category.manage.new") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/main" %>
+<% end %>
+<div class="content_box_div">
+<%= simple_form_for([:manage,@wiki_category]) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <% if controller.action_name == :new.to_s %>
+    <%= f.input :parent_id, :as => :select, collection: get_level_top_categories(@school.wiki_categories) %>
+    <% end %>
+    <%= f.input :name, :input_html => {:class => "input_text"} %>
+    <%= f.hidden_field :school_ids, value: params[:school]  %> 
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+</div>

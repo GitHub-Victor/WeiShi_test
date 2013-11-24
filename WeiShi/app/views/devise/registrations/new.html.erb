@@ -1,0 +1,17 @@
+<% content_for :sub_title, t("navigation.title.sign_up") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/main" %>
+<% end %>
+<div class="content_box_div">
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+    <%= display_base_errors resource %>
+    <%= f.input :username, :required => true, :autofocus => true, :input_html => {:class => "input_text"} %>
+    <%= f.input :nickname, :required => true, :input_html => {:class => "input_text"} %>
+    <%= f.input :email, :required => true, :input_html => {:class => "input_text"} %>
+    <%= f.input :password, :required => true, :input_html => {:class => "input_text"} %>
+    <%= f.input :password_confirmation, :required => true, :input_html => {:class => "input_text"} %>
+    <%= f.button :submit, t("devise.registrations.submit_sign_up"), :class => 'btn-primary' %>
+  <% end %>
+  <%= render "devise/shared/links" %>
+</div>

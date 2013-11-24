@@ -1,0 +1,2 @@
+module Wechat::FeatureHelper
+end

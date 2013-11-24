@@ -1,0 +1,7 @@
+<% content_for :sub_title, t("navigation.title.homepage") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/main" %>
+<% end %>
+<div class="content_box_div">
+  <%= link_to "进入管理页面", admin_root_path %>
+</div>

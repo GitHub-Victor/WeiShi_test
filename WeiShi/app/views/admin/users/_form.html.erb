@@ -1,0 +1,41 @@
+<%= semantic_form_for [:admin, @user] do |f| %>
+  <%= f.inputs "Details" do %>
+    <%= f.input :username %>
+    <%= f.input :email %>
+    <%= f.input :nickname %>
+    <%= f.input :password, :autocomplete => "off", :required => false, :hint => Proc.new{ "如果不更改密码，请留空" if controller.action_name == :edit.to_s }.call %>
+    <%= f.input :password_confirmation, :required => false %>
+    <% if current_user.id != @user.id %>
+    <%     @category = current_user.category.try(:descendants)
+           @category = Category.all if current_user.has_role?(:superadmin) %>
+    <%= f.input :category_id, as: :select, :collection => @category.map {|i| ["#{'-' * i.level} #{i.name}" ,i.id] }, :include_blank => false %>
+    <%= f.input :role_ids, :as => :select, :collection => Role.accessible_by(current_ability), :include_blank => false %> 
+    <% end %>
+    </li>
+  <% end %>
+  <%= f.actions %>
+<% end %>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function (){ 
+
+    /* 支持双select值移动jquery代码; */
+    $("#leftbtn").click(function (){ 
+      move_to_list("school_list","user_school_ids");
+    });  
+    $("#rightbtn").click(function (){  
+      move_to_list("user_school_ids","school_list");
+    });
+
+    // break off the form submit opption.
+    $("form").submit(function(){
+      return select_all_options("user_school_ids");
+    });
+
+    filteroption("school_list");
+    // the search text box event;
+    $("#search_text").on("change keyup paste click", function(){
+      resetOption(this.value,"school_list");
+    });
+});
+</script>

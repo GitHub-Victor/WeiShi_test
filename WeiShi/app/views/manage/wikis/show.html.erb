@@ -1,0 +1,24 @@
+<% content_for :sub_title, t("navigation.title.wiki") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/wikis" %>
+<% end %>
+
+<div class="content_pub">
+  <div class="content_modi">
+    <!-- left preview start  -->
+    <div class="left_div">
+      <h3 id="preiview_title"><%= @wiki.title %></h3>
+      <span id="preview_time" class="msgdate"><%= "#{@wiki.author} #{l(@wiki.updated_at, :format => :long)}" %></span>
+      <div id="preview_content" class="preview_content">
+        <%= raw @wiki.content %>
+      </div>
+    </div>
+    <!-- left preview end -->
+    <!-- right edit start -->
+    <div class="edit_block">
+      <%= link_to t("wiki.label.edit"), edit_manage_wiki_path(@wiki), :class => "btn" %>
+      <%= link_to t('wiki.label.destroy'), manage_wiki_path(@wiki), method: :delete, data: { confirm: t("wiki.manage.index.delete_sure")}, :class => "btn" %>
+    </div>
+  </div>
+</div>
+

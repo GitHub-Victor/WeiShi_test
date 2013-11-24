@@ -1,0 +1,71 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  app_name: "Dandelion Campus"
+  # status enum
+  classy_enum:
+    wiki_status:
+      passed: 'Passed'
+      rejected: 'Rejected'
+      processing: 'Processing'
+      all: 'All'
+  # navigation string
+  navigation:
+    title:
+      logout: 'Logout'
+      login: 'Login'
+      edit_account: 'Edit Account'
+      wiki: 'Wiki'
+      wiki_category: 'Wiki Category'
+      admin: 'Admin'
+      sign_up: 'Sign up'
+  wiki:
+    wechat:
+      index:
+        title: "School Wikis"
+        hot:  "HOT"
+        hot_keyword: "Key Word"
+        keyword_1: "Study"
+        keyword_2: "PostGraduate"
+        keyword_3: "Organization"
+      search:
+        title: "Search Result"
+        no_data: "Sorry, there is no any data for this keyword."
+    messages:
+      create_successfully: "Wiki was successfully created."
+      update_successfully: 'Wiki was successfully updated.'
+      school_not_belongs_current_user: 'This school is not belongs to you!'
+    label:
+      edit: "edit"
+      destroy: "delete"
+    filter:
+      all_school_category: "All Schools And Categories"
+  wiki_category:
+    messages:
+      create_successfully: "Wiki category was successfully created."
+      update_successfully: 'Wiki category was successfully updated.'
+  # model field
+  activerecord:
+    models:
+      wiki: "Wiki"
+      wiki_category: "Wiki Category"
+    attributes:
+      wiki:
+        title: "title"
+        cover: "cover"
+        author: "author"
+        content: "content"
+        user_id: "User"
+        status: "Status"
+        updated_at: "Update Time"
+      wiki_category:
+        name: "Name"
+        parent_id: "Parent Category"
+        school_ids: "Belongs Schools"
+        user_id: "User"
+    errors:
+      messages:
+        blank: "%{attribute} can't not blank"
+        too_long: "%{attribute} is too long"
+        taken: "%{attribute} has been taken"

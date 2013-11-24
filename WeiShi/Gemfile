@@ -1,0 +1,60 @@
+source 'http://ruby.taobao.org'
+ruby '2.0.0'
+gem 'rails', '3.2.14'
+gem 'sqlite3'
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+gem "jquery-rails", "< 3.0.0"
+gem 'bootstrap-sass'
+gem 'cancan'
+gem 'devise'
+gem 'figaro'
+gem 'rolify'
+gem 'simple_form'
+gem "activeadmin", "~> 0.6.2"
+gem 'china_city'
+gem "classy_enum", "~> 3.3.1"
+gem 'awesome_nested_set'
+gem 'active_admin-awesome_nested_set'
+gem 'carrierwave'
+gem "mini_magick"
+gem "ckeditor"
+gem "the_sortable_tree", "~> 2.3.0"
+gem "weixin_public"
+# to support the windows os
+gem 'bcrypt-ruby', '3.1.2.rc1', :require => 'bcrypt'
+gem 'therubyracer'
+gem 'execjs'
+gem 'sunspot_rails'
+gem 'progress_bar'
+gem 'will_paginate', '~> 3.0'
+gem 'strong_parameters', '>= 0.1.6'
+gem "cancan_strong_parameters"
+gem 'rails-i18n', '~> 3.0.0'
+gem 'chinese_pinyin'
+gem 'rmmseg-cpp-huacnlee', '0.2.9'
+gem 'mysql2'
+gem 'activerecord-mysql-adapter'
+gem 'newrelic_rpm'
+gem 'humanize_boolean'
+gem 'to_xls-rails'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'quiet_assets'
+end
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+end
+group :test do
+  gem 'capybara'
+  gem 'cucumber-rails', :require=>false
+  gem 'database_cleaner', '1.0.1'
+  gem 'email_spec'
+  gem 'launchy'
+end

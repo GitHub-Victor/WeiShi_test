@@ -1,0 +1,7 @@
+<p>您好， <%= @resource.email %>!</p>
+
+<p>您的账号由于密码错误次数达到了最大限制，已被锁，您可以点击下面链接对账号进行解锁。</p>
+
+<p>在此之后，请您检查您的密码安全</p>
+
+<p><%= link_to "解锁账户", unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

@@ -1,0 +1,21 @@
+<% content_for :sub_title, t("navigation.title.edit_account") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/main" %>
+<% end %>
+<div class="content_box_div">
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors resource %>
+  <%= f.input :username, :enable => false, :input_html => {:disabled => true, :class => "input_text"} %>
+  <%= f.input :nickname, :required => true, :autofocus => true, :input_html => {:class => "input_text"} %>
+  <% if f.object.email.blank? %>
+  <%= f.input :email, :required => true, :input_html => {:class => "input_text"} %>
+  <% else %>
+  <%= f.input :email, :required => true, :input_html => {:disabled => true, :class => "input_text"} %>
+  <% end %>
+  <%= f.input :password, :autocomplete => "off", :hint => t("devise.registrations.passwords_hint"), :required => false, :input_html => {:class => "input_text"} %>
+  <%= f.input :password_confirmation, :required => false , :input_html => {:class => "input_text"}%>
+  <%= f.input :current_password, :hint => t("devise.registrations.current_password_need_hint"), :required => true, :input_html => {:class => "input_text"} %>
+  <%= f.button :submit, t("devise.registrations.submit_update"), :class => 'btn-primary' %>
+<% end %>
+</div>

@@ -1,0 +1,2 @@
+module Interface::HomeHelper
+end

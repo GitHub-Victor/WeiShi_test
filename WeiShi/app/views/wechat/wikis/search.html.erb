@@ -1,0 +1,40 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'wechat/wikis/category' %>
+  <%= javascript_include_tag "wechat/wikis/category" %>
+<% end %>
+
+<div class="mtop" id="mtop">
+  <div style="height: 100px;position: relative; display:table; margin:auto;" id="headerBox">
+    <div style="display:table-cell; vertical-align: middle;">
+      <div class="className floatLeft">
+      <p id='title'>
+        <%= t("wiki.wechat.search.title") %>
+      </p>
+      </div>
+      <div class="pic floatLeft" id="right-logo"></div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+  <div class="ptitle" id="ptitle"></div>
+</div>
+
+<div style="margin-top: 25px;">
+  <ul>
+    <% @wikis.each do |wiki| %>
+      <li onclick="go('<%= wechat_wiki_path wiki.id, {:category => wiki.wiki_categories.first.id, :school => params[:school]} %>')">
+        <div class="atitle"><%= wiki.title %></div>
+        <div class="apic"><img src="<%= wiki.cover.small %>"></div>
+        <div class="acontent"><%= truncate(wiki.content, length: 30) %></div>
+        <div style="clear:both;"></div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= will_paginate @wikis  %>
+
+<% if @wikis.count == 0 %>
+<div class="warning">
+  <%= t("wiki.wechat.search.no_data") %>
+</div>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_tag('/wechat/campus/fill_more_info', method: "post") do %>
+  <% @schools.collect do |school| %>
+    <button type="submit" name="school_id" value="<%= school['id'] %>"><%= school['title'] %></button>
+  <% end %>
+<% end %>

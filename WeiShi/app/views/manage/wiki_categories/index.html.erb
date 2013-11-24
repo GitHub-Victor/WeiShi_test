@@ -1,0 +1,34 @@
+<% content_for :sub_title, t("navigation.title.wiki_category") %>
+<% content_for :head do %>
+<%= stylesheet_link_tag "manage/category" %>
+<% end %>
+<div class="content_pub">
+  <div class="content_modi">
+    <% @schools.each do |school| %>
+      <!-- left school start -->
+      <div class="left_div">
+        <h3>
+          <%= school.name %>
+        </h3>
+        <span class="msgdate">
+          <%= link_to t("wiki_category.manage.new"), new_manage_wiki_category_path({:school => school.id}), :class=>"btn" %>
+        </span>
+      </div>
+      <!-- left school end -->
+
+      <!-- right category start -->
+      <div class="edit_block">
+        <span class="abs msg_arrow a_out"></span>
+        <span class="abs msg_arrow a_in"></span>
+        <% categories = school.wiki_categories %>
+        <ol class="sortable_tree" data-max-levels="0" data-rebuild-url="<%= rebuild_manage_wiki_categories_path %>" >
+          <%= build_server_tree(categories, :namespace => :manage, :title => :name, render_module: Manage::EditWikiCategoryTreeHelper ) %>
+        </ol>
+      </div>
+      <!-- right category end -->
+
+    <% end %>
+
+  </div>
+</div>
+

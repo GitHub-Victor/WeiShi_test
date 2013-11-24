@@ -1,0 +1,41 @@
+<% content_for :head do %>
+<%= javascript_include_tag "manage/wiki_form" %>
+<%= stylesheet_link_tag "manage/wikis" %>
+<% end %>
+<div class="content_pub">
+  <div class="content_modi">
+    <!-- left preview start  -->
+    <div class="left_div">
+      <h3 id="preiview_title"></h3>
+      <span id="preview_time" class="msgdate"></span>
+      <div id="preview_content" class="preview_content">
+
+      </div>
+    </div>
+    <!-- left preview end -->
+
+    <!-- right edit start -->
+    <div class="edit_block">
+      <div class="deitting_wrapper">
+        <%= simple_form_for([:manage,@wiki]) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-actions">
+            <%= f.input :title, :input_html => {:class => "input_text"} %>
+            <%= f.input :author, :input_html => {:class => "input_text"} %>
+            <%= f.input :cover, :as => :file, :hint => Proc.new{ f.template.image_tag(f.object.cover.small) unless f.object.cover.blank? }.call, input_html: {:class => "cover_area"}  %>
+            <%= f.input :content, :as => :ckeditor, :input_html => { :ckeditor => {:toolbar => 'Full', :height => 400} } %>
+            <%= f.association :schools, :as => :check_boxes, collection: current_user.schools %>
+            <% current_user.schools.each_with_index {|school, index| %>
+              <%= f.select :wiki_category_ids, option_group_form_categories_for_select(school.wiki_categories), {}, { :multiple => true, :size => 15, :id => "wiki_categoires_#{school.id.to_s}", :style => "display: none", :class => "school_category" }  %>
+            <% } %>
+            <a id="btn_preview" href class="local_btn"><%= t("wiki.manage.new.btn_preview") %></a>
+            <a id="btn_submit" href class="local_btn"><%= t("wiki.manage.new.btn_submit") %></a>
+          </div>
+        <% end %>
+        <span class="abs msg_arrow a_out"></span>
+        <span class="abs msg_arrow a_in"></span>
+      </div>
+    </div>
+    <!-- right edit end -->
+  </div>
+</div>

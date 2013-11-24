@@ -1,0 +1,10 @@
+<%= form_tag('/wechat/campus/list_school', method: "post") do %>
+  <div class="control-group">
+    <div class="controls">
+      <%= text_field_tag(:school_name, nil, :placeholder => 'Enter search term...') %>
+      <%= submit_tag("搜索") %>
+    </div>
+  </div>
+  <button type="submit" name="province" value="120000">北京</button>
+  <button type="submit" name="province" value="130000">广东</button>
+<% end %>

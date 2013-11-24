@@ -1,0 +1,13 @@
+<div class='rails-helper city-group'>
+    <%= semantic_form_for [:admin, @school] do |f| %>
+      <%= f.inputs "Details" do %>
+        <%= f.input :province, :as => :select, :collection => ChinaCity.list, 
+                :input_html => {:class =>['city-select', 'city-province'], :disabled => true} %>
+        <%= f.input :city, :as => :select, :collection => ChinaCity.list(@school.province.to_s), 
+                :input_html => {:class =>['city-select', 'city-city'], :disabled => true} %>
+        <%= f.input :district, :as => :select, :collection => ChinaCity.list(@school.city.to_s), 
+                :input_html => {:class =>['city-select', 'city-district'], :disabled => true } %>
+        <%= f.input :name, :input_html => {:disabled => true} %>
+      <% end %>
+    <% end %>
+</div>

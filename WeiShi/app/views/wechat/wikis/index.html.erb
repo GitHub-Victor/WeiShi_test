@@ -1,0 +1,50 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'wechat/wikis/index' %>
+<% end %>
+
+<div class="header">
+  <div class="xybk">
+  <p><%= t("wiki.wechat.index.title") %></p>
+  </div>
+    <div class="header-top">
+      <p>
+        <span id="hot"><%= t("wiki.wechat.index.hot") %></span>
+        <span><%= t("wiki.wechat.index.hot_keyword") %></span>
+      </p>
+        <ul>
+          <li><%= link_to_keyword t("wiki.wechat.index.keyword_1") %></li>
+          <li><%= link_to_keyword t("wiki.wechat.index.keyword_2") %></li>
+          <li><%= link_to_keyword t("wiki.wechat.index.keyword_3") %></li>
+        </ul>
+    </div>
+  <div class="header-middle">
+    <%= form_for Wiki.search, :url => wechat_wikis_search_path, :html => {:method => :get} do |f| %>
+      <% if not params[:school].nil? %>
+        <input type="hidden" name="school" value="<%= params[:school] %>">
+      <% end %>
+      <div id="header-logo"></div>
+      <%= f.text_field :title_contains, :id => "search" %>
+      <div class="search-rightbox">
+      <div>
+      <input id="search-pic" style="border:none" onfocus="blur();" onclick="javascript:this.form.submit();" />
+      </div>
+      </div>  
+    <% end %>
+  </div>
+</div>
+<div class="container">
+<% get_top_categories(@wiki_categories).each do |category| %>
+  <div class="contentBox">
+      <%= content_tag :h3, category.name %>
+      <div class="content">
+        <ul>
+        <% get_second_categories(category).each{|children| %>
+          <li>
+            <%= link_to children.name, wechat_wikis_category_path(children.id, :school => params[:school]) %>
+          </li>
+        <% } %>
+        </ul>
+      </div>
+  </div>
+<% end %>
+</div>

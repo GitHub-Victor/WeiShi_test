@@ -1,0 +1,114 @@
+body{
+  font-family:'Microsoft YaHei','榛戜綋';
+  margin:0;
+  text-align:center;
+}
+body> div{
+  max-width:1000px;
+  text-align:left;
+  display:block;
+  margin: auto;
+}
+p{
+  font-size:18px;
+  line-height: 25px;
+  text-align:justify;
+  text-justify:inter-ideograph;
+  -ms-text-justify: inter-ideograph;
+  margin:10px 0;
+}
+img{
+  width:100% !important;
+  height: auto !important;
+}
+.header{
+  padding:40px 10px;
+  color:#fff;
+  /*background-color:#08c;*/
+  /*background-color:#f0ad4e;*/
+  background-color:#fff;
+  /*background-color:#d58512;*/
+  font-size:100%;
+  text-align:left;
+}
+#title{
+  margin:0;
+  font-size:180%;
+}
+.footer{
+  padding:20px 10px;
+  border-top:1px #aaa solid;
+  margin-top:25px;
+  text-align:center;
+}
+#footerBtnBox a{
+  border:1px #08c solid;
+  padding:6px 15%;
+  font-size:17px;
+  color:#333;
+  text-align:center;
+  display:inline;
+  margin:0;
+  width:45%;
+  text-decoration: none;
+  box-shadow:#aaa 0 1px 3px;
+}
+a#commentBtn{
+  border-radius:25px 0 0 25px;
+  border-right: 0;
+}
+#sayBtn{
+  border-radius:0 25px 25px 0;
+}
+#commentBox{
+  margin:15px 0 0 0;
+  display:none;
+  -webkit-transition: all 0.5s;
+}
+#commentBox p{
+  padding:0;
+  text-indent: 0;
+  text-align:left;
+  margin:0;
+}
+#commentBox input,#commentBox textarea{
+  width:97%;
+  border:1px #08c solid;
+  padding:4px 5px;
+  font-size:15px;
+  border-radius:2px;
+}
+textarea{
+  height:60px;
+}
+#commentBox input:focus,#commentBox textarea:focus{
+  box-shadow:#aaa 1px 1px 3px inset;
+  outline:none;
+}
+#commentBox input[type='submit']{
+  width:auto;
+  padding:5px 25px;
+  box-shadow:#aaa 0 1px 2px;
+  background-color: #39b3d7;
+  border-color: #269abc;
+  width:100%;
+  color:#fff;
+  font-weight:bold;
+}
+#commentBox input[type='submit']:focus,#commentBox input[type='submit']:hover{
+  text-shadow:#222 1px 1px 3px;
+}
+.pull-center,#commentBox .pull-center{
+  text-align:center;
+}
+.active{
+  background-color:#39b3d7;
+  color:#fff;
+  font-weight:bold;
+}
+.container{
+  padding:0 10px;
+  text-align: justify; 
+  word-wrap:break-word; 
+  word-break: break-all;
+}

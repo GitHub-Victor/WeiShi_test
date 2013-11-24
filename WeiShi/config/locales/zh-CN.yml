@@ -1,0 +1,154 @@
+"zh-CN":
+  app_name: "蒲公英微校园"
+  home:
+    supplement_personal_information: "请您补充Email、昵称等重要资料，Email将作为密码的重要找回途径"
+  # status enum
+  classy_enum:
+    status:
+      passed: '通过'
+      rejected: '不通过'
+      processing: '处理中'
+      all: '所有'
+  # navigation string
+  navigation:
+    title:
+      homepage: "主页"
+      logout: '注销'
+      login: '登录'
+      edit_account: '修改资料'
+      wiki: '校园百科'
+      wiki_category: '百科分类管理'
+      admin: '后台管理'
+      sign_up: '注册'
+      forget_password: "忘记密码"
+  wiki:
+    wechat:
+      index:
+        title: "校园百科"
+        hot:  "HOT"
+        hot_keyword: "关键字"
+        keyword_1: "学习"
+        keyword_2: "考研"
+        keyword_3: "社团"
+      search:
+        title: "搜索结果"
+        no_data: "抱歉，没有搜索到您想要的结果"
+    manage:
+      index:
+        search_title: "搜索标题"
+        submit_search: "搜索"
+        delete_sure: "您确认要删除吗?"
+        new: "新建百科"
+      new:
+        btn_preview: "预览"
+        btn_submit: "提交"
+    messages:
+      create_successfully: "百科创建成功"
+      update_successfully: '百科编辑成功'
+      school_not_belongs_current_user: '您没有权限管理这所学校!'
+    label:
+      show: "查看"
+      edit: "编辑"
+      destroy: "删除"
+  wiki_category:
+    manage:
+      limit_in_level_second: "抱歉，只能创建2级分类"
+      delete_sure: "您确认要删除吗?"
+      new: "新建分类"
+    messages:
+      create_successfully: "百科分类创建成功"
+      update_successfully: '百科分类编辑成功'
+  # model field
+  activerecord:
+    models:
+      wiki: "校园百科"
+      category: "学校信息"
+      user: "管理用户"
+      school: "学校"
+      role: "用户角色"
+      invite: "拉新信息"
+      work: "作品信息"
+    attributes:
+      category:
+        name: "名称"
+        parent_id: "上级分类"
+        user_id: "发布用户"
+        created_at: "创建时间"
+        updated_at: "更新时间"
+      user:
+        login: "用户名或邮箱"
+        username: "用户名"
+        nickname: "昵称"
+        email: "邮箱"
+        password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
+        last_sign_in_at: "上次登陆时间"
+        created_at: "注册时间"
+        role_ids: "角色"
+        school_ids: "管理学校"
+        sign_in_count: "登陆次数"
+        current_sign_in_at: "当前登陆时间"
+        current_sign_in_ip: "当前登陆IP"
+        last_sign_in_ip: "上次登陆IP"
+        failed_attempts: "密码错误重试次数"
+        locked_at: "被锁时间"
+        remember_me: "记住密码"
+        category_id: "学校信息"
+      role:
+        name: "名称"
+        level: "权限等级"
+      school:
+        name: "名称"
+        province: "省份"
+        city: "城市"
+        district: "区"
+      invite:
+        weshi_user_id: "用户ID"
+        remark: "备注"
+        status: "状态"
+        user: "录入用户"
+        is_follow_pgy: "是否关注蒲公英微校园"
+        is_has_avatar: "是否有头像"
+        home_page: "用户主页地址"
+        category: "学校信息"
+        last_check_user: "最后检查人"
+        user_information: "用户信息"
+        created_at: "录入时间"
+        updated_at: "更新时间"
+      work:
+        weshi_user_id: "用户ID"
+        work_links: "作品链接"
+        remark: "备注"
+        status: "状态"
+        user: "录入用户"
+        category: "学校信息"
+        last_check_user: "最后检查人"
+        created_at: "录入时间"
+        updated_at: "更新时间"
+    errors:
+      messages:
+        blank: "%{attribute} 不能为空"
+        too_long: "%{attribute} 超过长度"
+        taken: "%{attribute} 已被占用"
+        immutable: "%{attribute} 创建后不能更改"
+  # will_paginate
+  will_paginate:
+    previous_label: "&#8592; 上一页"
+    next_label: "下一页 &#8594;"
+    page_gap: "&hellip;"
+    page_entries_info:
+      multi_page: 共%{count}条记录
+      multi_page_html: 共<b>%{count}</b>条记录
+      single_page:
+        one: 正显示1条%{model}记录
+        other: 正显示所有共%{count}条%{model}记录
+        zero: 暂无记录
+      single_page_html:
+        one: 正显示<b>1</b>条%{model}记录
+        other: 正显示所有共<b>%{count}</b>条%{model}记录
+        zero: 暂无记录
+  locale:
+    boolean:
+      yes: 是
+      no: 否

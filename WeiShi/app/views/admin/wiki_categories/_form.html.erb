@@ -1,0 +1,47 @@
+<p><strong> Beacuse of the complexity of the wiki categories, we don't suggest that operate here directly.Please contact the developer. </strong></p>
+<%= semantic_form_for [:admin, @wiki_category] do |f| %>
+  <%= f.inputs "Details" do %>
+    <%= f.input :parent_id, as: :select, :collection => nested_set_options(WikiCategory, @wiki_category) {|i| "#{'-' * i.level} #{i.name}" } %>
+    <%= f.input :name %>
+    <li class="select input optional">
+      <%= f.label :search_school %>
+      <input id="search_text" type="text"> 
+      <p class="inline-hints">input the school name key word here.</p>
+    </li> 
+    <li class="select input optional">
+      <%= f.label :school_ids %>
+      <select id="school_list"  multiple="true" onchange="selectChange()" size="15">
+        <%= options_from_collection_for_select(School.all, :id, :name) %>
+      </select>
+      <input id="leftbtn" type="button" value=">>" onclick="toAdd()"/>  
+      <input id="rightbtn" type="button" value="<<" onclick="toRemove()"/>  
+      <%= f.select :school_ids, @wiki_category.schools.collect {|s| [s.name, s.id] },{ :prompt => nil},{ :multiple => true, :size => 15}  %> 
+    </li>
+    <%= f.input :can_edit %>
+  <% end %>
+  <%= f.actions %>
+<% end %>
+
+<script language="javascript" type="text/javascript">  
+$(document).ready(function (){ 
+
+    /* 支持双select值移动jquery代码; */
+    $("#leftbtn").click(function (){ 
+      move_to_list("school_list","wiki_category_school_ids");
+    });  
+    $("#rightbtn").click(function (){  
+      move_to_list("wiki_category_school_ids","school_list");
+    });
+
+    // break off the form submit opption.
+    $("form").submit(function(){
+      return select_all_options("wiki_category_school_ids");
+    });
+
+    filteroption("school_list");
+    // the search text box event;
+    $("#search_text").on("change keyup paste click", function(){
+      resetOption(this.value,"school_list");
+    });
+});
+</script>

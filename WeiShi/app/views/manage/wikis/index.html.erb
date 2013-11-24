@@ -1,0 +1,81 @@
+  <% content_for :sub_title, t("navigation.title.wiki") %>
+  <% content_for :head do %>
+  <%= stylesheet_link_tag "manage/wikis" %>
+  <% end %>
+  <!-- left nav start -->
+  <div class="choice_item">
+    <ul class="menu_list">
+      <% current_user.schools.each_with_index do |school, index| %>
+        <ol class="sortable_tree">
+          <li>
+            <%= link_school school %>
+            <ol>
+            <%= build_server_tree(school.wiki_categories, :namespace => :manage, :title => :name, :school => school, render_module: Manage::ShowWikiCategoryTreeHelper) %>
+          </li>
+        </ol>
+      <% end %>
+
+    </ul>
+  </div>
+  <!-- left nav end -->
+
+  <!-- right content start -->
+  <div class="content_div">
+    <!-- search bar start -->
+    <div class="show_content">
+
+      <span class="left_category">
+      <%= link_to t("wiki.manage.index.new"), new_manage_wiki_path, :class => "btn" %>
+      <%= link_wiki_status "", { :label => t('classy_enum.wiki_status.all')} %>
+      <%= link_wiki_status :passed %>
+      <%= link_wiki_status :processing %>
+      <%= link_wiki_status :rejected %>
+      </span>
+      <span class="search">
+      <%= form_for @search, :url => manage_wikis_path, :html => {:method => :get} do |f| %>
+        <%= f.text_field :title_contains, :placeholder => t("wiki.manage.index.search_title"), :id => "msgSearchInput", :class => "search_text" %>
+        <%= f.submit :value => t("wiki.manage.index.submit_search"), :class => "btn" %>
+      <% end %>
+      </span>
+    </div>
+    <!-- search bar end -->
+    <table class="table table-striped">
+      <thead>
+        <tr style="text-align:left; height:40px;" class="thead">
+          <th class="first_col" style="width:10%">
+            <%= t('activerecord.attributes.wiki.cover')%>
+          </th>
+          <th style="width:25%">
+            <%= t('activerecord.attributes.wiki.title')%>
+          </th>
+          <th><%= t('activerecord.attributes.wiki.updated_at') %></th>
+          <th><%= t('activerecord.attributes.wiki.visit_count') %></th>
+          <th><%= t('activerecord.attributes.wiki.status') %></th>
+          <th style="text-align:center;"><%= t('activerecord.attributes.wiki.operation')%></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @wikis.each_with_index do |wiki, index| %>
+        <tr <%== "class=\"even\"" if index.even? %>>
+          <td style="text-align:center;"><%= image_tag wiki.cover.small, :size => "30x30" %></td>
+          <td><%= link_to wiki.title, manage_wiki_path(wiki) %></td>
+          <td><%= l(wiki.updated_at,:format => :long ) %></td>
+          <td><%= wiki.visit_count %></td>
+          <td><%= wiki.wiki_status.text %></td>
+          <td style="text-align:center;">
+            <%= link_to t('wiki.label.show'), manage_wiki_path(wiki), :class => "btn" %>
+            <%= link_to t('wiki.label.edit'), edit_manage_wiki_path(wiki), :class => "btn" %>
+            <%= link_to t('wiki.label.destroy'), manage_wiki_path(wiki), method: :delete, data: { confirm: t("wiki.manage.index.delete_sure")}, :class => "btn" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <div class="page_info">
+        <%= page_entries_info @wikis %>
+      </div>
+      <%= will_paginate @wikis, :container => false %>
+    </div>
+  </div>
+  <!-- right content end -->
